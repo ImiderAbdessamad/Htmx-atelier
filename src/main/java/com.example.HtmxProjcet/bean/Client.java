@@ -1,14 +1,9 @@
 package com.example.HtmxProjcet.bean;
 
-import javax.persistence.*;
-
-import java.math.*;
-
-import java.time.*;
-
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 
@@ -19,6 +14,10 @@ public class Client {
 	private Long id ;
 	private String nom ;
 	private String prenom ;
+	private String password ;
+	private String email ;
+	private String telephone ;
+
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "client")
 	private List<Commande> commandes ;
@@ -28,6 +27,14 @@ public class Client {
 
 	// Constructeur par défaut
 	public Client() {
+	}
+
+	public Client(String nom, String prenom, String password, String email, String telephone) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password=password;
+		this.email = email;
+		this.telephone = telephone;
 	}
 
 	public Long getId() {
@@ -70,4 +77,27 @@ public class Client {
 		this.reclamations = reclamations;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

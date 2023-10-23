@@ -2,11 +2,7 @@ package com.example.HtmxProjcet.service.Facade;
 
 import com.example.HtmxProjcet.bean.Produit;
 
-import java.time.*;
-
-import java.math.*;
-
-import java.util.*;
+import java.util.List;
 
 public interface ProduitService {
 

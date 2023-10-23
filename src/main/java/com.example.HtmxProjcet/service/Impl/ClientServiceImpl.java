@@ -1,27 +1,13 @@
 package com.example.HtmxProjcet.service.Impl;
 
 import com.example.HtmxProjcet.bean.Client;
-
 import com.example.HtmxProjcet.dao.ClientDao;
-
 import com.example.HtmxProjcet.service.Facade.ClientService;
-
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
-import java.time.*;
-
-import java.math.*;
-
-import java.util.*;
-
-import com.example.HtmxProjcet.bean.Commande;
-
-
-import com.example.HtmxProjcet.bean.Reclamation;
+import javax.transaction.Transactional;
+import java.util.List;
 
 
 @Service
@@ -38,9 +24,19 @@ public class ClientServiceImpl implements ClientService {
 	public 	List<Client> findByNom(String nom) { return clientDao.findByNom(nom);} 
 
 	@Override 
-	public 	List<Client> findByPrenom(String prenom) { return clientDao.findByPrenom(prenom);} 
+	public 	List<Client> findByPrenom(String prenom) { return clientDao.findByPrenom(prenom);}
 
-	@Override 
+	@Override
+	public Client findByEmail(String email) {
+		return clientDao.findByEmail(email);
+	}
+
+	@Override
+	public Client findByTelephone(String telephone) {
+		return clientDao.findByTelephone(telephone);
+	}
+
+	@Override
 	public 	List<Client> findByCommandesId(Long id) { return clientDao.findByCommandesId(id);} 
 
 	@Override 
@@ -66,9 +62,19 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override 
 	@Transactional
-	public 	int deleteByPrenom(String prenom) { return clientDao.deleteByPrenom(prenom);} 
+	public 	int deleteByPrenom(String prenom) { return clientDao.deleteByPrenom(prenom);}
 
-	@Override 
+	@Override
+	public int deleteByEmail(String email) {
+		return clientDao.deleteByEmail(email);
+	}
+
+	@Override
+	public int deleteByTelephone(String telephone) {
+		return clientDao.deleteByTelephone(telephone);
+	}
+
+	@Override
 	@Transactional
 	public 	int deleteByCommandesId(Long id) { return clientDao.deleteByCommandesId(id);} 
 

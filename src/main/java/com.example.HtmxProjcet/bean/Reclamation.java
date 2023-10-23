@@ -2,14 +2,6 @@ package com.example.HtmxProjcet.bean;
 
 import javax.persistence.*;
 
-import java.math.*;
-
-import java.time.*;
-
-import java.util.*;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
 
 public class Reclamation {
@@ -23,6 +15,11 @@ public class Reclamation {
 
 	// Constructeur par défaut
 	public Reclamation() {
+	}
+
+	public Reclamation(String contenu, Client client) {
+		this.contenu = contenu;
+		this.client = client;
 	}
 
 	public Long getId() {

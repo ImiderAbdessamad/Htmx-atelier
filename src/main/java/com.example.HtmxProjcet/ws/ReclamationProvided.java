@@ -1,63 +1,66 @@
 package com.example.HtmxProjcet.ws;
 
+import com.example.HtmxProjcet.bean.Client;
 import com.example.HtmxProjcet.bean.Reclamation;
 import com.example.HtmxProjcet.service.Facade.ReclamationService;
+import com.example.HtmxProjcet.service.Impl.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import java.time.*;
-import java.math.*;
-import java.util.*;
-import com.example.HtmxProjcet.bean.Client;
+
+import java.util.List;
 
 
-@RestController
-@RequestMapping("api/v1/reclamation")
+@Controller
+
 public class ReclamationProvided {
 
 	@Autowired
 	private ReclamationService reclamationService;
+	@Autowired
+	private ClientServiceImpl clientService;
 
-	@GetMapping("/id/{id}")
+	@GetMapping("/reclamation/id/{id}")
 	public Reclamation findById(@PathVariable Long id) {
 		return reclamationService.findById(id);
 	}
 
-	@GetMapping("/contenu/{contenu}")
+	@GetMapping("/reclamation/contenu/{contenu}")
 	public 	List<Reclamation> findByContenu(@PathVariable String contenu) {
 		return reclamationService.findByContenu(contenu);
 	}
 
-	@GetMapping("/clientId/{id}")
+	@GetMapping("/reclamation/clientId/{id}")
 	public 	List<Reclamation> findByClientId(@PathVariable Long id) {
 		return reclamationService.findByClientId(id);
 	}
 
-	@GetMapping("/clientNom/{nom}")
+	@GetMapping("/reclamation/clientNom/{nom}")
 	public 	List<Reclamation> findByClientNom(@PathVariable String nom) {
 		return reclamationService.findByClientNom(nom);
 	}
 
-	@GetMapping("/clientPrenom/{prenom}")
+	@GetMapping("/reclamation/clientPrenom/{prenom}")
 	public 	List<Reclamation> findByClientPrenom(@PathVariable String prenom) {
 		return reclamationService.findByClientPrenom(prenom);
 	}
 
-	@GetMapping("/")
+	@GetMapping("/reclamation")
 	public List<Reclamation> findAll() {
 		return reclamationService.findAll();
 	}
 
-	@DeleteMapping("/id/{id}")
+	@DeleteMapping("/reclamation/id/{id}")
 	public int deleteById(@PathVariable Long id) {
 		return reclamationService.deleteById(id);
 	}
 
-	@DeleteMapping("/contenu/{contenu}")
+	@DeleteMapping("/reclamation/contenu/{contenu}")
 	public 	int deleteByContenu(@PathVariable String contenu) {
 		return reclamationService.deleteByContenu(contenu);
 	}
 
-	@DeleteMapping("/clientId/{id}")
+	@DeleteMapping("/reclamation/clientId/{id}")
 	public 	int deleteByClientId(@PathVariable Long id) {
 		return reclamationService.deleteByClientId(id);
 	}
@@ -67,17 +70,32 @@ public class ReclamationProvided {
 		return reclamationService.deleteByClientNom(nom);
 	}
 
-	@DeleteMapping("/clientPrenom/{prenom}")
+	@DeleteMapping("/reclamation/clientPrenom/{prenom}")
 	public 	int deleteByClientPrenom(@PathVariable String prenom) {
 		return reclamationService.deleteByClientPrenom(prenom);
 	}
 
-	@PostMapping("/")
+	@PostMapping("/reclamation")
 	public Reclamation save(@RequestBody Reclamation reclamation) {
 		return reclamationService.save(reclamation);
 	}
+	@GetMapping("/CreateNewReclamation")
+	public String post() {
+		return "reclamation/reclamation";
+	}
 
-	@PutMapping("/")
+	@PostMapping("/newReclamation")
+	@ResponseBody
+	public String create(@RequestParam("email") String email,@RequestParam("telephone") String telephone ,@RequestParam("contenu") String contenu ) {
+		Client client = clientService.findByEmail(email);
+
+		Reclamation reclamation = new Reclamation(contenu,client);
+
+		Reclamation reclamation1 = reclamationService.save(reclamation);
+		return reclamation1.getContenu();
+	}
+
+	@PutMapping("/reclamation")
 	public Reclamation update(@RequestBody Reclamation reclamation) {
 		return reclamationService.update(reclamation);
 	}

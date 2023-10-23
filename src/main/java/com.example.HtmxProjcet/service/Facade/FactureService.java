@@ -2,11 +2,9 @@ package com.example.HtmxProjcet.service.Facade;
 
 import com.example.HtmxProjcet.bean.Facture;
 
-import java.time.*;
-
-import java.math.*;
-
-import java.util.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public interface FactureService {
 

@@ -1,14 +1,9 @@
 package com.example.HtmxProjcet.bean;
 
-import javax.persistence.*;
-
-import java.math.*;
-
-import java.time.*;
-
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 
@@ -18,6 +13,7 @@ public class Produit {
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private Long id ;
 	private String code ;
+	private String description ;
 	private double prix ;
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	@OneToMany(mappedBy = "produit")
@@ -25,6 +21,12 @@ public class Produit {
 
 	// Constructeur par défaut
 	public Produit() {
+	}
+
+	public Produit(String code, String description, double prix) {
+		this.code = code;
+		this.description = description;
+		this.prix = prix;
 	}
 
 	public Long getId() {
@@ -59,4 +61,11 @@ public class Produit {
 		this.commandeProduits = commandeProduits;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }

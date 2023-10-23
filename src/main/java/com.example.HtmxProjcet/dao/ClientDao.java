@@ -1,16 +1,10 @@
 package com.example.HtmxProjcet.dao;
 
 import com.example.HtmxProjcet.bean.Client;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import org.springframework.stereotype.Repository;
 
-import java.time.*;
-
-import java.math.*;
-
-import java.util.*;
+import java.util.List;
 
 @Repository
 
@@ -19,6 +13,9 @@ public interface ClientDao extends JpaRepository<Client , Long> {
 	List<Client> findByNom(String nom);
 
 	List<Client> findByPrenom(String prenom);
+	Client findByEmail(String email);
+	Client findByTelephone(String telephone);
+
 
 	List<Client> findByCommandesId(Long id);
 
@@ -31,6 +28,8 @@ public interface ClientDao extends JpaRepository<Client , Long> {
 	int deleteByNom(String nom);
 
 	int deleteByPrenom(String prenom);
+	int deleteByEmail(String email);
+	int deleteByTelephone(String telephone);
 
 	int deleteByCommandesId(Long id);
 

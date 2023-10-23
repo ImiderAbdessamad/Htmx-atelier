@@ -2,17 +2,10 @@ package com.example.HtmxProjcet.bean;
 
 import javax.persistence.*;
 
-import java.math.*;
-
-import java.time.*;
-
-import java.util.*;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 @Entity
 
 public class CommandeProduit {
+
 
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO) 
@@ -24,6 +17,11 @@ public class CommandeProduit {
 
 	// Constructeur par défaut
 	public CommandeProduit() {
+	}
+
+	public CommandeProduit(Commande commande, Produit produit) {
+		this.commande = commande;
+		this.produit = produit;
 	}
 
 	public Long getId() {

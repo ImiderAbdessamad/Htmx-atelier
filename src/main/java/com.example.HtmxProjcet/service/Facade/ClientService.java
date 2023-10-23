@@ -2,11 +2,7 @@ package com.example.HtmxProjcet.service.Facade;
 
 import com.example.HtmxProjcet.bean.Client;
 
-import java.time.*;
-
-import java.math.*;
-
-import java.util.*;
+import java.util.List;
 
 public interface ClientService {
 
@@ -15,6 +11,9 @@ public interface ClientService {
 	List<Client> findByNom(String nom);
 
 	List<Client> findByPrenom(String prenom);
+	Client findByEmail(String email);
+	Client findByTelephone(String telephone);
+
 
 	List<Client> findByCommandesId(Long id);
 
@@ -31,6 +30,9 @@ public interface ClientService {
 	int deleteByNom(String nom);
 
 	int deleteByPrenom(String prenom);
+
+	int deleteByEmail(String email);
+	int deleteByTelephone(String telephone);
 
 	int deleteByCommandesId(Long id);
 

@@ -1,14 +1,10 @@
 package com.example.HtmxProjcet.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
-
-import java.math.*;
-
-import java.time.*;
-
-import java.util.*;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 
@@ -27,6 +23,13 @@ public class Facture {
 
 	// Constructeur par défaut
 	public Facture() {
+	}
+
+	public Facture(Commande commande, Client client, BigDecimal total, LocalDateTime dateFcature) {
+		this.commande = commande;
+		this.client = client;
+		this.total = total;
+		this.dateFcature = dateFcature;
 	}
 
 	public Long getId() {

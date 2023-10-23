@@ -1,14 +1,9 @@
 package com.example.HtmxProjcet.bean;
 
-import javax.persistence.*;
-
-import java.math.*;
-
-import java.time.*;
-
-import java.util.*;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 
@@ -23,6 +18,12 @@ public class Commande {
 	private List<CommandeProduit>  commandeProduits ;
 	@ManyToOne
 	private Client client ;
+
+	public Commande(double total, List<CommandeProduit> commandeProduits, Client client) {
+		this.total = total;
+		this.commandeProduits = commandeProduits;
+		this.client = client;
+	}
 
 	// Constructeur par défaut
 	public Commande() {

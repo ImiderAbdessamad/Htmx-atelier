@@ -1,16 +1,10 @@
 package com.example.HtmxProjcet.dao;
 
 import com.example.HtmxProjcet.bean.Reclamation;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import org.springframework.stereotype.Repository;
 
-import java.time.*;
-
-import java.math.*;
-
-import java.util.*;
+import java.util.List;
 
 @Repository
 
